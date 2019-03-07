@@ -1,0 +1,57 @@
+.extension_bandersnatch_popup-container {
+  padding: 64px;
+  text-align: center;
+  width: calc(100% - 128px);
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+}
+
+.extension_bandersnatch_popup {
+  padding: 16px;
+  color: #2e2e2e;
+  background-color: #fff;
+  text-align: left;
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+              0px 24px 38px 3px rgba(0, 0, 0, 0.14),
+              0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+
+.extension_bandersnatch_popup h1, .extension_bandersnatch_popup h2  {
+  padding: 0px 16px;
+}
+
+.extension_bandersnatch_sub-heading {
+  color: rgb(102,102,102);
+}
+
+.extension_bandersnatch_right {
+  width: 100%;
+  text-align: right;
+}
+
+.extension_bandersnatch_snackbar-container {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: calc(100% - 16px);
+  padding: 8px;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+}
+
+.extension_bandersnatch_snackbar {
+  color: #fff;
+  background-color: #2e2e2e;
+  font-size: 12px;
+  text-align: center;
+  padding: 8px;
+  display: inline-block;
+  z-index: 100;
+  border-radius: 2px;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 
+              0px 6px 10px 0px rgba(0, 0, 0, 0.14), 
+              0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}

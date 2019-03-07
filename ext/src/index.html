@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PAC</title>
+  <style>
+    body {
+      margin: 0px;
+      color: white;
+      background-color: black;
+      width: 300px;
+      height: 490px;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    #qr-code {
+      width: 275px;
+      height: 275px;
+    }
+
+    #code {
+      font-size: 2.6em;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="popup">
+    <h2 id="public-path">pac.elviswolcott.com</h2>
+    <p>scan</p>
+    <canvas id="qr-code"></canvas>
+    <p>or enter this code</p>
+    <p id="code"></p>
+  </div>
+
+  <script src="./pageAction.js"></script>
+</body>
+</html>
