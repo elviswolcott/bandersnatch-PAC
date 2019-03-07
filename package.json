@@ -1,0 +1,21 @@
+{
+  "name": "bandersnatch",
+  "version": "1.0.0",
+  "description": "you need a package in the root folder for Netlify to deploy",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elviswolcott/bandersnatch-PAC.git"
+  },
+  "author": "Elvis Wolcott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elviswolcott/bandersnatch-PAC/issues"
+  },
+  "homepage": "https://github.com/elviswolcott/bandersnatch-PAC#readme"
+}
