@@ -11,7 +11,8 @@
     "build:ext": "cd ext && webpack",
     "make:keys": "node netlify-keys.js",
     "install:web": "cd web && npm install",
-    "build:web": "cd web && npm run build"
+    "build:web": "cd web && npm run build",
+    "netlify": "npm run make:keys && npm run install:web && npm run build:web"
   },
   "repository": {
     "type": "git",
