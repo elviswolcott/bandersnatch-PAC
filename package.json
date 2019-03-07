@@ -1,0 +1,26 @@
+{
+  "name": "bandersnatch",
+  "version": "1.0.0",
+  "description": "handles build on Netlify",
+  "main": "netlify-keys.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:ext": "cd ext && npm install",
+    "build:ext": "cd ext && webpack",
+    "make:keys": "node netlify-keys.js",
+    "install:web": "cd web && npm install",
+    "build:web": "cd web && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elviswolcott/bandersnatch-PAC.git"
+  },
+  "author": "Elvis Wolcott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elviswolcott/bandersnatch-PAC/issues"
+  },
+  "homepage": "https://github.com/elviswolcott/bandersnatch-PAC#readme"
+}
