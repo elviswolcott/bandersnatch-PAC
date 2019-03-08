@@ -34,12 +34,12 @@ Once the code is entered your phone will be synced to the extension and will sta
     4. [:hammer: Build the Chrome Extension](#hammer-build-the-chrome-extension)
 4. [:gear: Development](#gear-development)
 5. [:question: FAQ](#question-faq)
-    - [The remote gets the options before they show up on screen. What is this magic?](#the-remote-gets-the-options-before-they-show-up-on-screen.-what-is-this-magic?)
-    - [What happens if I don't vote?](#what-happens-if-i-don't-vote)
-    - [What happens when there's a tie?](#what-happens-when-there's-a-tie)
-    - [Can you add...](#can-you-add...)
-    - [My question isn't here!](#my-question-isn't-here!)
-    - [It's broken.](#it's-broken)
+    - [The remote gets the options before they show up on screen. What is this magic?](#the-remote-gets-the-options-before-they-show-up-on-screen-what-is-this-magic)
+    - [What happens if I don't vote?](#what-happens-if-i-dont-vote)
+    - [What happens when there's a tie?](#what-happens-when-theres-a-tie)
+    - [Can you add...](#can-you-add)
+    - [My question isn't here!](#my-question-isnt-here)
+    - [It's broken.](#its-broken)
 
 # :grey_question: Why would I need this? #
 
