@@ -17,7 +17,7 @@ You can grab this extension from the Chrome Web Store [here](https://chrome.goog
 
 If you have a QR Code scanner you can just scan the QR Code!
 
-Otherwise, go to [https://pac.elviswolcott.com](https://pac.elviswolcott.com) to access the remote. If you allow camera access you can scan the QR Code from the site, or you can enter the code manually.
+Otherwise, go to [https://pac.elviswolcott.com](https://pac.elviswolcott.com) to access the remote. If you allow camera access you can scan the QR Code from the web app, or you can enter the code manually.
 
 Once the code is entered, your phone will be synced to the extension. You should see the options on screen mirrored to your phone at the next decision.
 
@@ -32,7 +32,7 @@ Once the code is entered, your phone will be synced to the extension. You should
     2. [:key: Get your **FREE** PubNub keys](#key-get-your-free-pubnub-keys)
     3. [:hammer: Build the Web App](#hammer-build-the-web-app)
     4. [:hammer: Build the Chrome Extension](#hammer-build-the-chrome-extension)
-    5. [:earth_americas: Deploying the Site](#earth_americas-deploying-the-site)
+    5. [:earth_americas: Deploying the Web App](#earth_americas-deploying-the-web-app)
 4. [:gear: Development](#gear-development)
 5. [:question: FAQ](#question-faq)
     - [The remote gets the options before they show up on screen. What is this magic?](#the-remote-gets-the-options-before-they-show-up-on-screen-what-is-this-magic)
@@ -97,13 +97,13 @@ You can download the project in any of these ways:
 - Enable `Developer mode` in the top right corner
 - Click `Load unpacked...` and choose `/ext/dist`
 
-## :earth_americas: Deploying the Site ##
+## :earth_americas: Deploying the Web App ##
 
-How you deploy the site is up to you. As long as you make the `/web/dist` directory accessible you should be good to go.
+How you deploy the web app is up to you. As long as you make the `/web/dist` directory accessible you should be good to go.
 
-I find that [Netlify](https://netlify.com/) is the easiest option. If you don't have a Netlify account, the easiest option is [Netlify Drop](https://app.netlify.com/drop). You can just drag and drop the `/ext/dist` directory into your browser and Netlify will deploy it for you. You can set up a custom domain, tweak your settings, and create an account to keep your site online permanently. 
+I find that [Netlify](https://netlify.com/) is the easiest option. If you don't have a Netlify account, the easiest option is [Netlify Drop](https://app.netlify.com/drop). You can just drag and drop the `/ext/dist` directory into your browser and Netlify will deploy it for you. You can set up a custom domain, tweak your settings, and create an account to keep your web app online permanently. 
 
-If you want make your own changes, the best option is to use Netlify to deploy from git. They'll automatically build the site on their servers and publish the result every time you commit. Getting Netlify setup to deploy from git only takes a few clicks. 
+If you want make your own changes, the best option is to use Netlify to deploy from git. They'll automatically build the web app on their servers and publish the result every time you commit. Getting Netlify setup to deploy from git only takes a few clicks. 
 
 - Sign in to [Netlify](https://app.netlify.com/)
 - Click `New site from Git`
