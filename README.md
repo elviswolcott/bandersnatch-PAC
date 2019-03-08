@@ -11,26 +11,26 @@
 
 ## :computer: Extension ##
 
-You can grab the extension from the Chrome Web Store [here](https://chrome.google.com/webstore/detail/bandersnatch-pac/lhcoekiedpkknoomgpjinffiplhinifb). Install the extension on the computer where you'll be watching and start watching [Bandersnatch](https://www.netflix.com/watch/80988062). The extension should turn red. If you click it, a code and QR code will pop up.
+You can grab this extension from the Chrome Web Store [here](https://chrome.google.com/webstore/detail/bandersnatch-pac/lhcoekiedpkknoomgpjinffiplhinifb). Install the extension start watching [Bandersnatch](https://www.netflix.com/watch/80988062). The extension should turn red. When you click it, a QR code and channel code will pop up. You can enter these from the web app.
 
-## :iphone: Website ##
+## :iphone: Web App ##
 
 If you have a QR Code scanner you can just scan the QR Code!
 
 Otherwise, go to [https://pac.elviswolcott.com](https://pac.elviswolcott.com) to access the remote. If you allow camera access you can scan the QR Code from the site, or you can enter the code manually.
 
-Once the code is entered your phone will be synced to the extension and will start receiving decisions to vote on.
+Once the code is entered, your phone will be synced to the extension. You should see the options on screen mirrored to your phone at the next decision.
 
 # :blue_book: Table of Contents #
 
 1. [:red_circle: Live Demo](#red_circle-live-demo)
     - [:computer: Extension](#computer-extension)
-    - [:iphone: Website](#iphone-website)
+    - [:iphone: Web App](#iphone-web-app)
 2. [:grey_question: Why would I need this?](#grey_question-why-would-i-need-this)
 3. [:fast_forward: Quickstart](#fast_forward-quickstart)
     1. [:floppy_disk: Download the Project](#floppy_disk-download-the-project)
     2. [:key: Get your **FREE** PubNub keys](#key-get-your-free-pubnub-keys)
-    3. [:hammer: Build the Website](#hammer-build-the-website)
+    3. [:hammer: Build the Web App](#hammer-build-the-web-app)
     4. [:hammer: Build the Chrome Extension](#hammer-build-the-chrome-extension)
     5. [:earth_americas: Deploying the Site](#earth_americas-deploying-the-site)
 4. [:gear: Development](#gear-development)
@@ -44,9 +44,9 @@ Once the code is entered your phone will be synced to the extension and will sta
 
 # :grey_question: Why would I need this? #
 
-While watching Bandersnatch with a group of friends I encountered an unexpected issue. Trying to come to a consensus within 10 seconds can quickly become a mess. This project addresses this issue by providing a remote control designed specifically for Bandersnatch and supporting voting between multiple users. It also can make for a fun thematic twist when playing with others - nobody is in control of what path they follow.
+While watching Bandersnatch with a group of friends I encountered an unexpected issue. Coming to a consensus in the 10 second decision window can prove to be a challenge. This project addresses this issue by providing a remote control designed specifically for Bandersnatch which supports voting between multiple users. It also can make for a fun thematic twist when playing with others - nobody is in control of what path they follow.
 
-This was a perfect project to show of PubNub. When you only have 10 seconds to make your decision, every millisecond counts. PubNub's ultra low latency ensures that every vote cast before time expires makes it to the extension before the decision is made, and even allows for the remote to receive the decisions _before_ they are visible on screen.
+This was a perfect project to show off the capabilities PubNub. When you only have 10 seconds to make your decision, every millisecond counts. PubNub's ultra low latency ensures that every vote cast makes it to the extension in time to be counted. Combined with a little bit of magic, the extension can even get the pathways to the remote _before_ they are visible on your TV.
 
 # :fast_forward: Quickstart #
 
@@ -71,7 +71,7 @@ You can download the project in any of these ways:
 - Click the big red button labeled `CREATE NEW APP +`
 - Enter a name for your app (I went with Bandersnatch PAC for consistency) and click `CREATE`
 - Select your new app and then select the `Demo Keyset`
-- Create a file named `keys.json` in the project directory and paste in the JSON below (both the extension and the website need this to connect to PubNub)
+- Create a file named `keys.json` in the project directory and paste in the JSON below (both the extension and the web app need this to connect to PubNub)
 - Replace the `publishKey` and `subscribeKey` with your keys from the PubNub dashboard and save the changes
 
 ```json
@@ -81,12 +81,12 @@ You can download the project in any of these ways:
 }
 ```
 
-## :hammer: Build the Website ##
+## :hammer: Build the Web App ##
 
 - Edit `deploy-details.json` to contain the path where you will deploy the project
 - In your terminal, navigate to the project directory
-- `npm run install:web` - Downloads the dependencies _note: you only need to run this the first time the first time you build the website_
-- `npm run build:web` - Builds the website to `/web/dist`
+- `npm run install:web` - Downloads the dependencies _note: you only need to run this the first time you build the web app_
+- `npm run build:web` - Builds the web app to `/web/dist`
 
 ## :hammer: Build the Chrome Extension ##
 
@@ -99,16 +99,17 @@ You can download the project in any of these ways:
 
 ## :earth_americas: Deploying the Site ##
 
-How you deploy the site is up to you. All you need to do is make `/web/dist` folder up on a file server or whatever hosting system you're familiar with. 
+How you deploy the site is up to you. As long as you make the `/web/dist` directory accessible you should be good to go.
 
-I find that [Netlify](https://netlify.com/) is the easiest option. If you don't have a Netlify account, the easiest option is [Netlify Drop](https://app.netlify.com/drop). You can just drag and drop the `/ext/dist` into your browser and netlify will put it online. From there, you can set up a custom domain, tweak your settings, and create an account to keep your site online. 
+I find that [Netlify](https://netlify.com/) is the easiest option. If you don't have a Netlify account, the easiest option is [Netlify Drop](https://app.netlify.com/drop). You can just drag and drop the `/ext/dist` directory into your browser and Netlify will deploy it for you. You can set up a custom domain, tweak your settings, and create an account to keep your site online permanently. 
 
-The other option with Netlify is to deploy from git. This is the best option if you want make any changes, as it automatically updates your site when you commit changes. Getting Netlify setup just takes a few clicks. 
+If you want make your own changes, the best option is to use Netlify to deploy from git. They'll automatically build the site on their servers and publish the result every time you commit. Getting Netlify setup to deploy from git only takes a few clicks. 
 
+- Sign in to [Netlify](https://app.netlify.com/)
 - Click `New site from Git`
 - Select your git provider
 - Link your account
-- Select your repository
+- Find and select your repository
 - For `Build command` use `npm run netlify`
 - For `Publish directory` use `web/dist`
 - Open the `Advanced options`
@@ -118,7 +119,7 @@ The other option with Netlify is to deploy from git. This is the best option if 
 
 # :gear: Development #
 
-These commands help when your actively making changes by keeping code readable and providing a webserver for the site.
+These commands help when you are actively making changes by keeping code readable and serving the web app to a local webserver.
 
 - `npm run serve:web` - Use Hot Module Reloading to reduce build times and serve files on a local webserver
 - `npm run lint:web` - Lint and format code ESLint + Prettier
@@ -128,7 +129,7 @@ These commands help when your actively making changes by keeping code readable a
 
 ## The remote gets the options before they show up on screen. What is this magic? ##
 
-Because the options have animations, they are detectable shortly before they are displayed. The Chrome Extension uses [Mutation Observers](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for changes to the DOM. This allows it to pull out the options as soon as they are added to the page. Combined with the speed of PubNub, messages can arrive in as little as 30ms-40ms with a global guarantee of 250ms. For reference, the visual reaction speed is somewhere around 150ms-200ms and a blink is around 100ms-400ms. With PubNub, messages literally arrive in the blink of an eye.
+Because the options have animations, they are detectable shortly before they are displayed. The Chrome Extension uses [Mutation Observers](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for changes to the DOM. This allows it to pull out the options as soon as they are added to the page. Combined with the speed of PubNub, messages can arrive in as little as 30ms-40ms with a global guarantee of 250ms. In comparison, visual reaction speed is around 150ms-200ms and a blink takes 100ms-400ms. With PubNub, messages literally arrive in the blink of an eye.
 
 Sources:
 1. [PubNub Latency](https://www.pubnub.com/developers/tech/network-infrastructure/)
@@ -137,22 +138,22 @@ Sources:
 
 ## What happens if I don't vote? ##
 
-Nothing.
+The extension will do nothing, Netflix will go with the default option.
 
 ## What happens when there's a tie? ##
 
-This behavior is somewhat undefined. The vote tallying uses Object.enumerate, so the order depends on the object. However,this does not mean the first vote wins necessarily. According to the spec, JSON key/value pairs or unsorted, so there is no guarantee of which order they will be processed. This adds some level of randomness, which seems like a acceptable solution for ties.
+This behavior is somewhat undefined. The vote tallying uses `Object.enumerate`, so the order votes are processed depends on the order of the object keys. However, this does not necessarily mean the first vote will win. According to the spec, JSON key/value pairs are unsorted. Therefore, the order they will be processed is unknown. This adds some level of randomness, which seems like a acceptable solution for ties.
 
 Sources:
 1. [JSON Spec](https://json.org/)
 
 ## Can you add... ##
 
-Maybe! [Create an issue](https://github.com/elviswolcott/bandersnatch-PAC/issues/new) with the `enhancement` tag and I'll see if it's something I can add.
+Maybe, [create an issue](https://github.com/elviswolcott/bandersnatch-PAC/issues/new) with the `enhancement` tag and I'll see if it's something I can add.
 
 ## My question isn't here! ##
 
-[Create an issue](https://github.com/elviswolcott/bandersnatch-PAC/issues/new) with the `question` tag and I'll add it to the FAQ as soon as possible.
+[Create an issue](https://github.com/elviswolcott/bandersnatch-PAC/issues/new) with the `question` tag and I'll add it to the FAQ.
 
 ## It's broken. ##
 
