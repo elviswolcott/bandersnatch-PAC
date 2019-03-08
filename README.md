@@ -23,17 +23,17 @@ Once the code is entered your phone will be synced to the extension and will sta
 
 # :blue_book: Table of Contents #
 
-1. [:red_circle: Live Demo](#-live-demo)
-    - [:computer: Extension](#-extension)
-    - [:iphone: Website](#-website)
-2. [:grey_question: Why would I need this?](#-why-would-i-need-this)
-3. [:fast_forward: Quickstart](#-quickstart)
-    1. [:floppy_disk: Download the Project](#-download-the-project)
-    2. [:key: Get your **FREE** PubNub keys](#-get-your-free-pubnub-keys)
-    3. [:hammer: Build the Website](#-build-the-website)
-    4. [:hammer: Build the Chrome Extension](-build-the-chrome-extension)
-4. [:gear: Development](#-development)
-5. [:question: FAQ](#-faq)
+1. [:red_circle: Live Demo](#red_circle-live-demo)
+    - [:computer: Extension](#computer-extension)
+    - [:iphone: Website](#iphone-website)
+2. [:grey_question: Why would I need this?](#grey_question-why-would-i-need-this)
+3. [:fast_forward: Quickstart](#fast_forward-quickstart)
+    1. [:floppy_disk: Download the Project](#floppy_disk-download-the-project)
+    2. [:key: Get your **FREE** PubNub keys](#key-get-your-free-pubnub-keys)
+    3. [:hammer: Build the Website](#hammer-build-the-website)
+    4. [:hammer: Build the Chrome Extension](#hammer-build-the-chrome-extension)
+4. [:gear: Development](#gear-development)
+5. [:question: FAQ](#question-faq)
     - [The remote gets the options before they show up on screen. What is this magic?](#the-remote-gets-the-options-before-they-show-up-on-screen.-what-is-this-magic?)
     - [What happens if I don't vote?](#what-happens-if-i-don't-vote)
     - [What happens when there's a tie?](#what-happens-when-there's-a-tie)
@@ -43,9 +43,9 @@ Once the code is entered your phone will be synced to the extension and will sta
 
 # :grey_question: Why would I need this? #
 
-After attempting to watch Bandersnatch I realized a problem: if you run Netflix off your computer on your TV you have to sit with your computer to make the decisions. I had an even worse experience when I tried to watch it with friends. Trying to come to a consensus within 10 seconds can quickly become a mess. This project addresses both issues by providing a remote control designed specifically for Bandersnatch and supporting voting between multiple users. It also can make for a fun thematic twist when playing with others - nobody is in control of what path they follow.
+While watching Bandersnatch with a group of friends I encountered an unexpected issue. Trying to come to a consensus within 10 seconds can quickly become a mess. This project addresses this issue by providing a remote control designed specifically for Bandersnatch and supporting voting between multiple users. It also can make for a fun thematic twist when playing with others - nobody is in control of what path they follow.
 
-This was a perfect project to show of PubNub. When you only have 10 seconds to make your decision every millisecond counts. PubNub's ultra low latency ensures that every vote cast before time expires makes it to the extension before time is up and even allows for the remote to receive the decisions before they are fully visible on screen.
+This was a perfect project to show of PubNub. When you only have 10 seconds to make your decision, every millisecond counts. PubNub's ultra low latency ensures that every vote cast before time expires makes it to the extension before the decision is made, and even allows for the remote to receive the decisions _before_ they are visible on screen.
 
 # :fast_forward: Quickstart #
 
