@@ -22,5 +22,6 @@ body {
 </style>
 
 <script>
-document.body.classList.add('darkmode');
+document.body.classList.add("darkmode");
+export default {};
 </script>
