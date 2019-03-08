@@ -303,7 +303,7 @@ export default {
 
     function tick() {
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        canvasElement.style.display = "inherit";
+        canvasElement.style.display = "inline-block";
         that.$data.msg = null;
 
         canvasElement.height = video.videoHeight;
