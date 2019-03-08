@@ -278,7 +278,7 @@ export default {
     digit12: makeWatcher(12, true)
   },
   mounted: function() {
-    document.body.classList.remove("darkmode");
+    //document.body.classList.remove("darkmode");
 
     var video = document.createElement("video");
     var canvasElement = document.getElementById("video-out");
@@ -343,13 +343,19 @@ export default {
 <style lang="scss" scoped>
 $primary: #af1414;
 $onprimary: white;
-$secondary: black;
+$onbg: white;
+$bg: black;
 // hide the number arrows
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.join {
+  background-color: $bg;
+  color: $onbg;
 }
 
 input[type="number"] {
@@ -361,7 +367,7 @@ input[type="number"] {
   max-width: calc(100% - 64px);
   display: inline-block;
   padding: 16px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   margin: 16px;
   word-wrap: break-word;
 }
@@ -375,6 +381,7 @@ input[type="number"] {
 
 #code {
   font-size: 2em;
+  color: $onbg;
 
   button {
     &:hover {
@@ -393,12 +400,12 @@ input[type="number"] {
     &:focus {
       outline: none;
       border-bottom: 2px $primary solid;
-      background-color: lighten($primary, 60%);
+      background-color: darken($primary, 10%);
       border-radius: 2px;
     }
 
     background-color: transparent;
-    color: $secondary;
+    color: $onbg;
     border: none;
     font-size: 0.8em;
     text-align: center;

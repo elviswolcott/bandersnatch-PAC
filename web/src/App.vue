@@ -20,3 +20,7 @@ body {
   }
 }
 </style>
+
+<script>
+document.body.classList.add('darkmode');
+</script>
