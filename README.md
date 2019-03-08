@@ -95,7 +95,7 @@ You can download the project in any of these ways:
 - `npm run build:ext` - Builds the Chrome extension to `/ext/dist`
 - In Chrome, navigate to [chrome://extensions](chrome://extensions)
 - Enable `Developer mode` in the top right corner
-- Click `Load unpacked...` and navigate 
+- Click `Load unpacked...` and choose `ext/dist`
 
 # :gear: Development #
 
