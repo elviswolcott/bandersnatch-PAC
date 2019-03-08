@@ -8,10 +8,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install:ext": "cd ext && npm install",
-    "build:ext": "cd ext && webpack",
+    "build:ext": "cd ext && npm run build",
+    "lint:ext": "cd ext && npm run lint",
     "make:keys": "node netlify-keys.js",
     "install:web": "cd web && npm install",
     "build:web": "cd web && npm run build",
+    "lint:web": "cd web && npm run lint",
     "netlify": "npm run make:keys && npm run install:web && npm run build:web"
   },
   "repository": {
