@@ -77,7 +77,7 @@ You can download the project in any of these ways:
 ```json
 {
   "publishKey" : "pub-c-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX",
-  "subscribeKey" : "sub-c-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXX"
+  "subscribeKey" : "pub-c-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX"
 }
 ```
 
