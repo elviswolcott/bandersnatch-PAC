@@ -32,6 +32,7 @@ Once the code is entered your phone will be synced to the extension and will sta
     2. [:key: Get your **FREE** PubNub keys](#key-get-your-free-pubnub-keys)
     3. [:hammer: Build the Website](#hammer-build-the-website)
     4. [:hammer: Build the Chrome Extension](#hammer-build-the-chrome-extension)
+    5. [:earth_americas: Deploying the Site](#earth_americas-deploying-the-site)
 4. [:gear: Development](#gear-development)
 5. [:question: FAQ](#question-faq)
     - [The remote gets the options before they show up on screen. What is this magic?](#the-remote-gets-the-options-before-they-show-up-on-screen-what-is-this-magic)
@@ -87,7 +88,6 @@ You can download the project in any of these ways:
 - `npm run install:web` - Downloads the dependencies _note: you only need to run this the first time the first time you build the website_
 - `npm run build:web` - Builds the website to `/web/dist`
 
-
 ## :hammer: Build the Chrome Extension ##
 
 - In your terminal, navigate to the project directory
@@ -95,7 +95,26 @@ You can download the project in any of these ways:
 - `npm run build:ext` - Builds the Chrome extension to `/ext/dist`
 - In Chrome, navigate to [chrome://extensions](chrome://extensions)
 - Enable `Developer mode` in the top right corner
-- Click `Load unpacked...` and choose `ext/dist`
+- Click `Load unpacked...` and choose `/ext/dist`
+
+## :earth_americas: Deploying the Site ##
+
+How you deploy the site is up to you. All you need to do is make `/web/dist` folder up on a file server or whatever hosting system you're familiar with. 
+
+I find that [Netlify](https://netlify.com/) is the easiest option. If you don't have a Netlify account, the easiest option is [Netlify Drop](https://app.netlify.com/drop). You can just drag and drop the `/ext/dist` into your browser and netlify will put it online. From there, you can set up a custom domain, tweak your settings, and create an account to keep your site online. 
+
+The other option with Netlify is to deploy from git. This is the best option if you want make any changes, as it automatically updates your site when you commit changes. Getting Netlify setup just takes a few clicks. 
+
+- Click `New site from Git`
+- Select your git provider
+- Link your account
+- Select your repository
+- For `Build command` use `npm run netlify`
+- For `Publish directory` use `web/dist`
+- Open the `Advanced options`
+- Add a `New variable` and enter `publishKey` for the key and your PubNub key for the value
+- Add a `New variable` and enter `publishKey` for the key and your PubNub key for the value
+- `Deploy site`
 
 # :gear: Development #
 
