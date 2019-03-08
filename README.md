@@ -1,0 +1,140 @@
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![code size](https://img.shields.io/github/repo-size/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC)
+[![GitHub issues](https://img.shields.io/github/issues/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC/issues)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC/blob/master/package.json)
+[![Website](https://img.shields.io/website-up-down-green-red/https/pac.elviswolcott.com.svg?style=flat-square)](https://pac.elviswolcott.com)
+[![GitHub last commit](https://img.shields.io/github/last-commit/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC/commits/master)
+[![Known Vulnerabilities](https://snyk.io/test/github/elviswolcott/bandersnatch-PAC/badge.svg?style=flat-square)](https://snyk.io/test/github/elviswolcott/bandersnatch-PAC/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1e1b6747-be84-4f08-9aba-c75f34fbb0b4/deploy-status)](https://app.netlify.com/sites/pensive-borg-90db04/deploys)
+
+# :red_circle: Live Demo #
+
+## :computer: Extension ##
+
+You can grab the extension from the Chrome Web Store [here](https://chrome.google.com/webstore/detail/bandersnatch-pac/lhcoekiedpkknoomgpjinffiplhinifb). Install the extension on the computer where you'll be watching and start watching [Bandersnatch](https://www.netflix.com/watch/80988062). The extension should turn red. If you click it, a code and QR code will pop up.
+
+## :iphone: Website ##
+
+If you have a QR Code scanner you can just scan the QR Code!
+
+Otherwise, go to [https://pac.elviswolcott.com](https://pac.elviswolcott.com) to access the remote. If you allow camera access you can scan the QR Code from the site, or you can enter the code manually.
+
+Once the code is entered your phone will be synced to the extension and will start receiving decisions to vote on.
+
+# :blue_book: Table of Contents #
+
+1. [:red_circle: Live Demo](#-live-demo)
+    - [:computer: Extension](#-extension)
+    - [:iphone: Website](#-website)
+2. [:grey_question: Why would I need this?](#-why-would-i-need-this)
+3. [:fast_forward: Quickstart](#-quickstart)
+    1. [:floppy_disk: Download the Project](#-download-the-project)
+    2. [:key: Get your **FREE** PubNub keys](#-get-your-free-pubnub-keys)
+    3. [:hammer: Build the Website](#-build-the-website)
+    4. [:hammer: Build the Chrome Extension](-build-the-chrome-extension)
+4. [:gear: Development](#-development)
+5. [:question: FAQ](#-faq)
+    - [The remote gets the options before they show up on screen. What is this magic?](#the-remote-gets-the-options-before-they-show-up-on-screen.-what-is-this-magic?)
+    - [What happens if I don't vote?](#what-happens-if-i-don't-vote)
+    - [What happens when there's a tie?](#what-happens-when-there's-a-tie)
+    - [Can you add...](#can-you-add...)
+    - [My question isn't here!](#my-question-isn't-here!)
+    - [It's broken.](#it's-broken)
+
+# :grey_question: Why would I need this? #
+
+After attempting to watch Bandersnatch I realized a problem: if you run Netflix off your computer on your TV you have to sit with your computer to make the decisions. I had an even worse experience when I tried to watch it with friends. Trying to come to a consensus within 10 seconds can quickly become a mess. This project addresses both issues by providing a remote control designed specifically for Bandersnatch and supporting voting between multiple users. It also can make for a fun thematic twist when playing with others - nobody is in control of what path they follow.
+
+This was a perfect project to show of PubNub. When you only have 10 seconds to make your decision every millisecond counts. PubNub's ultra low latency ensures that every vote cast before time expires makes it to the extension before time is up and even allows for the remote to receive the decisions before they are fully visible on screen.
+
+# :fast_forward: Quickstart #
+
+## :floppy_disk: Download the Project ##
+
+You can download the project in any of these ways:
+
+1. Git Clone **(recommended)** - _requires [git](https://git-scm.com/)_ 
+    - In your terminal, navigate to the directory where you want your project saved
+    - `git clone https://github.com/elviswolcott/bandersnatch-PAC.git`
+  
+2. GitHub Desktop - _requires [GitHub Desktop](https://desktop.github.com/)_
+    - [Click here](x-github-client://openRepo/https://github.com/elviswolcott/bandersnatch-PAC) to open in GitHub Desktop **or** click `Clone or Download` at the top of this page and select `Open in Desktop`
+
+3. Download as ZIP
+    - [Click here](https://github.com/elviswolcott/bandersnatch-PAC/archive/master.zip) to download a ZIP **or** click `Clone or Download` at the top of this page and select `Download ZIP`
+    - Extract the ZIP in your desired directory
+
+## :key: Get your **FREE** PubNub keys ##
+
+- Sign up/Login to the [PubNub dashboard](https://dashboard.pubnub.com/signup)
+- Click the big red button labeled `CREATE NEW APP +`
+- Enter a name for your app (I went with Bandersnatch PAC for consistency) and click `CREATE`
+- Select your new app and then select the `Demo Keyset`
+- Create a file named `keys.json` in the project directory and paste in the JSON below (both the extension and the website need this to connect to PubNub)
+- Replace the `publishKey` and `subscribeKey` with your keys from the PubNub dashboard and save the changes
+
+```json
+{
+  "publishKey" : "pub-c-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX",
+  "subscribeKey" : "sub-c-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXXX"
+}
+```
+
+## :hammer: Build the Website ##
+
+- Edit `deploy-details.json` to contain the path where you will deploy the project
+- In your terminal, navigate to the project directory
+- `npm run install:web` - Downloads the dependencies _note: you only need to run this the first time the first time you build the website_
+- `npm run build:web` - Builds the website to `/web/dist`
+
+
+## :hammer: Build the Chrome Extension ##
+
+- In your terminal, navigate to the project directory
+- `npm run install:ext` - Downloads the dependencies _note: you only need to run this the first time you build the extension_
+- `npm run build:ext` - Builds the Chrome extension to `/ext/dist`
+- In Chrome, navigate to [chrome://extensions](chrome://extensions)
+- Enable `Developer mode` in the top right corner
+- Click `Load unpacked...` and navigate 
+
+# :gear: Development #
+
+These commands help when your actively making changes by keeping code readable and providing a webserver for the site.
+
+- `npm run serve:web` - Use Hot Module Reloading to reduce build times and serve files on a local webserver
+- `npm run lint:web` - Lint and format code ESLint + Prettier
+- `npm run lint:ext` - Format code with Prettier
+
+# :question: FAQ #
+
+## The remote gets the options before they show up on screen. What is this magic? ##
+
+Because the options have animations, they are detectable shortly before they are displayed. The Chrome Extension uses [Mutation Observers](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for changes to the DOM. This allows it to pull out the options as soon as they are added to the page. Combined with the speed of PubNub, messages can arrive in as little as 30ms-40ms with a global guarantee of 250ms. For reference, the visual reaction speed is somewhere around 150ms-200ms and a blink is around 100ms-400ms. With PubNub, messages literally arrive in the blink of an eye.
+
+Sources:
+1. [PubNub Latency](https://www.pubnub.com/developers/tech/network-infrastructure/)
+2. [Reaction Speed](http://www.jneurosci.org/content/jneuro/26/15/3981.full.pdf)
+3. [Blink Speed](https://bionumbers.hms.harvard.edu/bionumber.aspx?id=100706&ver=0)
+
+## What happens if I don't vote? ##
+
+Nothing.
+
+## What happens when there's a tie? ##
+
+This behavior is somewhat undefined. The vote tallying uses Object.enumerate, so the order depends on the object. However,this does not mean the first vote wins necessarily. According to the spec, JSON key/value pairs or unsorted, so there is no guarantee of which order they will be processed. This adds some level of randomness, which seems like a acceptable solution for ties.
+
+Sources:
+1. [JSON Spec](https://json.org/)
+
+## Can you add... ##
+
+Maybe! [Create an issue](https://github.com/elviswolcott/bandersnatch-PAC/issues/new) with the `enhancement` tag and I'll see if it's something I can add.
+
+## My question isn't here! ##
+
+[Create an issue](https://github.com/elviswolcott/bandersnatch-PAC/issues/new) with the `question` tag and I'll add it to the FAQ as soon as possible.
+
+## It's broken. ##
+
+[Create an issue](https://github.com/elviswolcott/bandersnatch-PAC/issues/new) with the `bug` tag and I'll work on a fix.
