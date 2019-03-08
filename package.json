@@ -13,6 +13,7 @@
     "make:keys": "node netlify-keys.js",
     "install:web": "cd web && npm install",
     "build:web": "cd web && npm run build",
+    "serve:web": "cd web && npm run serve",
     "lint:web": "cd web && npm run lint",
     "netlify": "npm run make:keys && npm run install:web && npm run build:web"
   },
