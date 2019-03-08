@@ -168,8 +168,9 @@
 
 <script>
 import jsQR from "jsqr";
+const deploy = require("../../../deploy-details.json");
 
-const publicPath = "https://pac.elviswolcott.com";
+const publicPath = `https://${deploy.publicPath}`;
 
 // watcher for various input fields
 function makeWatcher(num, end) {

@@ -1,6 +1,6 @@
 import QRCode from 'qrcode'
-
-const basepath = "pac.elviswolcott.com"
+const deploy = require('../../deploy-details.json');
+const basepath = deploy.publicPath;
 const channel = localStorage.getItem('pac-channel');
 
 document.getElementById('public-path').innerText = basepath;
