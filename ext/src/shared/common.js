@@ -35,12 +35,5 @@ function inject(file, logString) {
     }
   );
 }
-function nodeListToArray(nodeList) {
-  var array = [];
-  for (let i = 0; i < nodeList.length; i++) {
-    array.push(nodeList[i]);
-  }
-  return array;
-}
 
-export { log, removeEl, inject, nodeListToArray };
+export { log, removeEl, inject };
