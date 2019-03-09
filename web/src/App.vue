@@ -5,23 +5,21 @@
 </template>
 
 <style lang="scss">
+@import "~@/assets/_theme.scss";
+
 #app {
-  font-family: sans-serif;
+  font-family: $font-stack;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
 
 body {
-  background-color: white;
+  background-color: $light;
+  margin: 0px;
 
   &.darkmode {
-    background-color: black;
+    background-color: $dark;
   }
 }
 </style>
-
-<script>
-document.body.classList.add("darkmode");
-export default {};
-</script>

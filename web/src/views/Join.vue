@@ -1,168 +1,182 @@
 <template>
   <div class="join">
-    <h1>Scan</h1>
-    <div id="no-video" v-if="msg">
-      <h2 id="no-video-msg">{{ msg }}</h2>
+    <div id="topbar">
+      <img src="./logo.png" id="logo" />
     </div>
-    <canvas id="video-out" hidden></canvas>
-    <h1>or enter your code:</h1>
-    <form
-      id="code"
-      onsubmit="event.preventDefault()"
-      @keydown.delete="backDigit"
-      @keydown.left="leftDigit"
-      @keydown.right="rightDigit"
-    >
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit1"
-        v-model="digit1"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(1)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit2"
-        v-model="digit2"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(2)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit3"
-        v-model="digit3"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(3)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit4"
-        v-model="digit4"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(4)"
-      />
-      <span>-</span>
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit5"
-        v-model="digit5"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(5)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit6"
-        v-model="digit6"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(6)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit7"
-        v-model="digit7"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(7)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit8"
-        v-model="digit8"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(8)"
-      />
-      <span>-</span>
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit9"
-        v-model="digit9"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(9)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit10"
-        v-model="digit10"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(10)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit11"
-        v-model="digit11"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(11)"
-      />
-      <input
-        type="text"
-        min="0"
-        max="9"
-        step="1"
-        id="digit12"
-        v-model="digit12"
-        placeholder="0"
-        pattern="[0-9]*"
-        inputmode="decimal"
-        @focus="focus(12)"
-      />
-      <br />
-      <br />
-      <button @click="formCode" id="digit-submit">Connect</button>
-    </form>
+    <div id="scanner" v-if="useCamera">
+      <canvas id="video-out" hidden></canvas>
+    </div>
+    <div id="manual-entry" v-if="!useCamera">
+      <h1>Enter your code from the extension to connect.</h1>
+      <form
+        id="code"
+        onsubmit="event.preventDefault()"
+        @keydown.delete="backDigit"
+        @keydown.left="leftDigit"
+        @keydown.right="rightDigit"
+      >
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit1"
+          v-model="digit1"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(1)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit2"
+          v-model="digit2"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(2)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit3"
+          v-model="digit3"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(3)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit4"
+          v-model="digit4"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(4)"
+        />
+        <span>-</span>
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit5"
+          v-model="digit5"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(5)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit6"
+          v-model="digit6"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(6)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit7"
+          v-model="digit7"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(7)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit8"
+          v-model="digit8"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(8)"
+        />
+        <span>-</span>
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit9"
+          v-model="digit9"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(9)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit10"
+          v-model="digit10"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(10)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit11"
+          v-model="digit11"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(11)"
+        />
+        <input
+          type="text"
+          min="0"
+          max="9"
+          step="1"
+          id="digit12"
+          v-model="digit12"
+          placeholder="0"
+          pattern="[0-9]*"
+          inputmode="decimal"
+          autocomplete="off"
+          @focus="focus(12)"
+        />
+        <br />
+        <button @click="formCode" id="digit-submit">Connect</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -212,9 +226,8 @@ export default {
       digit10: null,
       digit11: null,
       digit12: null,
-      msg:
-        "Unable to access video stream. Allow camera access or enter the code manually.",
-      current: 1
+      current: 1,
+      useCamera: true
     };
   },
   methods: {
@@ -278,7 +291,7 @@ export default {
     digit12: makeWatcher(12, true)
   },
   mounted: function() {
-    //document.body.classList.remove("darkmode");
+    document.body.classList.remove("darkmode");
 
     var video = document.createElement("video");
     var canvasElement = document.getElementById("video-out");
@@ -290,21 +303,21 @@ export default {
     navigator.mediaDevices
       .getUserMedia({ video: { facingMode: "environment" } })
       .then(stream => {
-        this.$data.msg = "Getting video from camera...";
         video.srcObject = stream;
         video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
         video.play();
         requestAnimationFrame(tick);
       })
       .catch(e => {
-        this.$data.msg = e.toString();
+        console.log(e);
+        this.$data.useCamera = false;
       });
     var that = this;
 
     function tick() {
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
         canvasElement.style.display = "inline-block";
-        that.$data.msg = null;
+        that.$data.useCamera = true;
 
         canvasElement.height = video.videoHeight;
         canvasElement.width = video.videoWidth;
@@ -341,10 +354,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$primary: #af1414;
-$onprimary: white;
-$onbg: white;
-$bg: black;
+@import "~@/assets/_theme.scss";
 // hide the number arrows
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -354,60 +364,67 @@ input::-webkit-inner-spin-button {
 }
 
 .join {
-  background-color: $bg;
-  color: $onbg;
+  color: $onlight;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
+#topbar {
+  background-color: $primary;
+  text-align: left;
+  padding: 8px;
 }
 
-#no-video {
-  width: 400px;
-  max-width: calc(100% - 64px);
-  display: inline-block;
-  padding: 16px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-  word-wrap: break-word;
+#logo {
+  width: 32px;
 }
 
 #video-out {
-  width: 400px;
-  max-width: calc(100% - 32px);
-  display: inline-block;
-  margin: 16px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+#manual-entry {
+  h1 {
+    font-size: 1.5em;
+  }
 }
 
 #code {
-  font-size: 2em;
-  color: $onbg;
+  font-size: 64px;
+  color: $onlight;
 
   button {
     &:hover {
-      background-color: lighten($primary, 10%);
+      background-color: $primary-active;
     }
 
+    font-family: $font-alt;
     background-color: $primary;
     color: $onprimary;
     border: none;
-    border-radius: 4px;
-    font-size: 1em;
-    padding: 8px;
+    border-radius: .2em;
+    font-size: .8em;
+    padding: 8px 16px;
+    margin-top: 8px;
   }
 
   input[type="text"] {
     &:focus {
       outline: none;
-      border-bottom: 2px $primary solid;
-      background-color: darken($primary, 10%);
+      border-bottom-color: $primary;
       border-radius: 2px;
     }
 
+    font-family: $font-stack;
+    font-size: 64px;
     background-color: transparent;
-    color: $onbg;
+    color: $onlight;
     border: none;
-    font-size: 0.8em;
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
     text-align: center;
     width: 1em;
   }
@@ -419,11 +436,49 @@ input[type="number"] {
     }
   }
 }
-
+@media only screen and (max-width: 900px) {
+  #code {
+    font-size: 40px;
+    
+    input[type="text"] {
+      border-bottom-width: 2px;
+      font-size: 40px;
+      padding: 0px;
+      width: 28px;
+    }
+  }
+}
 @media only screen and (max-width: 600px) {
-  input[type="text"] {
-    padding: 0px;
-    width: 20px !important;
+  #code {
+    font-size: 34px;
+    
+    input[type="text"] {
+      font-size: 34px;
+      padding: 0px;
+      width: 28px;
+    }
+  }
+}
+@media only screen and (max-width: 400px) {
+  #code {
+    font-size: 32px;
+
+    input[type="text"] {
+      font-size: 32px;
+      padding: 0px;
+      width: 25px;
+    }
+  }
+}
+@media only screen and (max-width: 350px) {
+  #code {
+    font-size: 32px;
+    
+    input[type="text"] {
+      font-size: 32px;
+      padding: 0px;
+      width: 24px;
+    }
   }
 }
 </style>

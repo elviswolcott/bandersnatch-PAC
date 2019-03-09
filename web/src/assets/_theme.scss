@@ -1,0 +1,11 @@
+$primary: #d02129;
+$primary-active: darken($primary, 10%);
+$onprimary: white;
+$light: darken(white, 6%);
+$onlight: lighten(black, 20%);
+$onlight-light: lighten($onlight, 20%);
+$ondark: white;
+$dark: black;
+
+$font-stack: 'Montserrat', sans-serif;
+$font-alt: 'Noto Sans', sans-serif;
