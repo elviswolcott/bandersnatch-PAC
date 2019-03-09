@@ -404,8 +404,8 @@ input::-webkit-inner-spin-button {
     background-color: $primary;
     color: $onprimary;
     border: none;
-    border-radius: .2em;
-    font-size: .8em;
+    border-radius: 0.2em;
+    font-size: 0.8em;
     padding: 8px 16px;
     margin-top: 8px;
   }
@@ -439,7 +439,7 @@ input::-webkit-inner-spin-button {
 @media only screen and (max-width: 900px) {
   #code {
     font-size: 40px;
-    
+
     input[type="text"] {
       border-bottom-width: 2px;
       font-size: 40px;
@@ -451,7 +451,7 @@ input::-webkit-inner-spin-button {
 @media only screen and (max-width: 600px) {
   #code {
     font-size: 34px;
-    
+
     input[type="text"] {
       font-size: 34px;
       padding: 0px;
@@ -473,7 +473,7 @@ input::-webkit-inner-spin-button {
 @media only screen and (max-width: 350px) {
   #code {
     font-size: 32px;
-    
+
     input[type="text"] {
       font-size: 32px;
       padding: 0px;
