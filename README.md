@@ -1,11 +1,12 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1e1b6747-be84-4f08-9aba-c75f34fbb0b4/deploy-status)](https://app.netlify.com/sites/pensive-borg-90db04/deploys)
+[![Website](https://img.shields.io/website-up-down-green-red/https/pac.elviswolcott.com.svg?style=flat-square)](https://pac.elviswolcott.com)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![code size](https://img.shields.io/github/repo-size/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC)
-[![GitHub issues](https://img.shields.io/github/issues/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC/issues)
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC/blob/master/package.json)
-[![Website](https://img.shields.io/website-up-down-green-red/https/pac.elviswolcott.com.svg?style=flat-square)](https://pac.elviswolcott.com)
 [![GitHub last commit](https://img.shields.io/github/last-commit/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC/commits/master)
+[![GitHub issues](https://img.shields.io/github/issues/elviswolcott/bandersnatch-PAC.svg?style=flat-square)](https://github.com/elviswolcott/bandersnatch-PAC/issues)
 [![Known Vulnerabilities](https://snyk.io/test/github/elviswolcott/bandersnatch-PAC/badge.svg?style=flat-square)](https://snyk.io/test/github/elviswolcott/bandersnatch-PAC/)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1e1b6747-be84-4f08-9aba-c75f34fbb0b4/deploy-status)](https://app.netlify.com/sites/pensive-borg-90db04/deploys)
+
 
 # :red_circle: Live Demo #
 
