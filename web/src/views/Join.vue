@@ -5,6 +5,7 @@
     </div>
     <div id="scanner" v-if="useCamera">
       <canvas id="video-out" hidden></canvas>
+      <p>Scan your code to connect.</p>
     </div>
     <div id="manual-entry" v-if="!useCamera">
       <h1>Enter your code from the extension to connect.</h1>
@@ -379,10 +380,6 @@ input::-webkit-inner-spin-button {
 
 #video-out {
   width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 100;
 }
 
 #manual-entry {
