@@ -2,9 +2,10 @@
 function startEcho() {
   var makeListener = (action, f) => {
     return msg => {
-      if (msg.action === action) {
+      if (msg.action === action && msg.used === false) {
         ports.forEach(port => {
-          f(msg.body, port);
+          // return true to avoid marking as used
+          msg.used = f(msg.body, port)? false: true;
         });
       }
     };
@@ -48,7 +49,8 @@ function startEcho() {
       ports.forEach(port => {
         port.postMessage({
           action,
-          body
+          body,
+          used: false
         });
       });
     }
@@ -62,13 +64,15 @@ function startCommunication() {
     send: (action, body) => {
       port.postMessage({
         action,
-        body
+        body,
+        used: false
       });
     },
     on: (action, f) => {
       port.onMessage.addListener((msg, port) => {
-        if (msg.action === action) {
-          f(msg.body, port);
+        if (msg.action === action && msg.used === false) {
+          // returning true prevents messages from being marked as used
+          msg.used = f(msg.body, port) ? false : true;
         }
       });
     }

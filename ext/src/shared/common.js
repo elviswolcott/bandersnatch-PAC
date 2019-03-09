@@ -36,4 +36,41 @@ function inject(file, logString) {
   );
 }
 
-export { log, removeEl, inject };
+// runs on messages sent with the chrome.runtime.sendMessage API
+// this listener manages injecting files when requested through inject()
+function handleInjections() {
+  chrome.runtime.onMessage.addListener(function(msg, sender, respondWith) {
+    var tab = sender.tab.id;
+    log(msg.action + " fired by " + tab + ".");
+    if (msg.action === "echo_tab_id") {
+      respondWith(tab);
+      return true;
+    } else if (msg.action === "inject_css" && msg.details.file) {
+      // a tab wants css injected
+      chrome.tabs.insertCSS(
+        tab,
+        {
+          file: msg.details.file
+        },
+        function() {
+          respondWith(chrome.runtime.lastError);
+        }
+      );
+      return true;
+    } else if (msg.action === "inject_js" && msg.details.file) {
+      // a tab wants js run
+      chrome.tabs.executeScript(
+        tab,
+        {
+          file: msg.details.file
+        },
+        function() {
+          respondWith(chrome.runtime.lastError);
+        }
+      );
+      return true;
+    }
+  });
+}
+
+export { log, removeEl, inject, handleInjections };
