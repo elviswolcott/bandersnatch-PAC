@@ -7,7 +7,4 @@ if (window.location.pathname === "/watch/80988062") {
 
   // navigator handles interacting with the DOM of the window
   inject("interaction.js", "page interaction script");
-
-  // allows extension to display info and error messages on the page
-  inject("messages.js", "extension message UI script");
 }

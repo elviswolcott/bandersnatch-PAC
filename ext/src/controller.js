@@ -1,7 +1,6 @@
 /* webpack stuff */
 import { log } from "./shared/common.js";
 import { startEcho } from "./shared/cs2cs.js";
-import { fireError } from "./shared/message.js";
 const PubNub = require("pubnub");
 const keys = require("../../keys.json");
 /* no more webpack stuff */
@@ -157,7 +156,6 @@ port.on("presentChoice_options", choices => {
       console.log(status, response);
       if (status.error) {
         console.log(error);
-        fireError("Unable to connect to servers.");
       }
     }
   });

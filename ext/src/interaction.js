@@ -1,5 +1,4 @@
 import { log } from "Shared/common.js";
-import { fireError, fireInfo } from "Shared/message.js";
 import { startCommunication } from "Shared/cs2cs.js";
 
 /* start script */
@@ -78,10 +77,6 @@ port.send("enable_action", "index");
 // ignore any events from the user (browser marks as trusted) so that only the extension can control
 const ignoreReal = e => {
   if (e.isTrusted) {
-    // the user is trying to gain control!!
-    fireInfo(
-      "I know that you were planning to make your own selection, and I'm afraid that's something I cannot allow to happen."
-    );
     e.preventDefault();
     e.stopPropagation();
     log("Prevented event");
@@ -149,10 +144,9 @@ const createMainObserver = port => {
   observer.observe(player, observerOptions);
 };
 
-// waits 5s before starting, intro and first scene is a few minutes so this is fine
+// waits 5s before starting to avoid firing a bunch as the page sets up, intro and first scene is a few minutes so this is fine
 setTimeout(() => {
   log("Observing DOM for changes");
-  fireInfo("Ready");
   createMainObserver(port);
 }, 5e3);
 

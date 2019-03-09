@@ -59,7 +59,6 @@ module.exports = {
 
 	entry: {
 		controller: './src/controller.js',
-		messages: './src/messages.js',
 		interaction: './src/interaction.js',
 		start: './src/start.js',
 		pageAction: './src/page-action.js'
@@ -93,11 +92,6 @@ module.exports = {
 			{
 				from: './src/manifest.json',
 				to: 'manifest.json',
-				toType: 'file'
-			},
-			{
-				from: './src/messages.css',
-				to: 'messages.css',
 				toType: 'file'
 			},
 			{
