@@ -16,164 +16,26 @@
         @keydown.left="leftDigit"
         @keydown.right="rightDigit"
       >
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit1"
-          v-model="digit1"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(1)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit2"
-          v-model="digit2"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(2)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit3"
-          v-model="digit3"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(3)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit4"
-          v-model="digit4"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(4)"
-        />
-        <span>-</span>
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit5"
-          v-model="digit5"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(5)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit6"
-          v-model="digit6"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(6)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit7"
-          v-model="digit7"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(7)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit8"
-          v-model="digit8"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(8)"
-        />
-        <span>-</span>
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit9"
-          v-model="digit9"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(9)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit10"
-          v-model="digit10"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(10)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit11"
-          v-model="digit11"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(11)"
-        />
-        <input
-          type="text"
-          min="0"
-          max="9"
-          step="1"
-          id="digit12"
-          v-model="digit12"
-          placeholder="0"
-          pattern="[0-9]*"
-          inputmode="decimal"
-          autocomplete="off"
-          @focus="focus(12)"
-        />
+        <div 
+          v-for="(digit, index) in digits"
+          :key="`digit${index}`"
+          style="display: inline-block"
+        >
+          <input
+            :id="`digit${index}`"
+            v-model="digits[index]"
+            @focus="focus(index)"
+            type="text"
+            min="0"
+            max="9"
+            step="1"
+            placeholder="0"
+            pattern="[0-9]*"
+            inputmode="decimal"
+            autocomplete="off"
+          />
+          <span v-if="index%4 == 3 && index != 11">-</span>
+        </div>
         <br />
         <button @click="formCode" id="digit-submit">Connect</button>
       </form>
@@ -184,120 +46,128 @@
 <script>
 import jsQR from "jsqr";
 const deploy = require("../../../deploy-details.json");
-
 const publicPath = `https://${deploy.publicPath}`;
 
-// watcher for various input fields
-function makeWatcher(num, end) {
-  return function(val) {
-    if (val === null || typeof val == "number") {
-      return;
-    }
-    val = parseInt(val[val.length - 1]);
-    if (val !== val || typeof val != "number") {
-      this.$data[`digit${num}`] = null;
-      return;
-    }
-    this.$data[`digit${num}`] = val % 10;
-    this.$data.current = num + 1;
-    var next;
-    if (end === true) {
-      next = "-submit";
-    } else {
-      next = num + 1;
-    }
-    document.getElementById(`digit${next}`).focus();
-  };
-}
 
 export default {
   name: "join",
   components: {},
   data: () => {
     return {
-      digit1: null,
-      digit2: null,
-      digit3: null,
-      digit4: null,
-      digit5: null,
-      digit6: null,
-      digit7: null,
-      digit8: null,
-      digit9: null,
-      digit10: null,
-      digit11: null,
-      digit12: null,
+      digits: [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
       current: 1,
       useCamera: true
     };
   },
   methods: {
     formCode: function() {
-      const d1 = this.$data.digit1 % 10;
-      const d2 = this.$data.digit2 % 10;
-      const d3 = this.$data.digit3 % 10;
-      const d4 = this.$data.digit4 % 10;
-      const d5 = this.$data.digit5 % 10;
-      const d6 = this.$data.digit6 % 10;
-      const d7 = this.$data.digit7 % 10;
-      const d8 = this.$data.digit8 % 10;
-      const d9 = this.$data.digit9 % 10;
-      const d10 = this.$data.digit10 % 10;
-      const d11 = this.$data.digit11 % 10;
-      const d12 = this.$data.digit12 % 10;
-      this.$router.push(
-        `/remote/${d1}${d2}${d3}${d4}-${d5}${d6}${d7}${d8}-${d9}${d10}${d11}${d12}`
-      );
+      var path = "/remote/";
+       this.$data.digits.forEach( (digit, index) => {
+         // cut everything down to one digit
+        digit = parseInt(digit) % 10;
+        // repalce NaN with ""
+        if(digit != digit) {
+          digit = "";
+        }
+        // update the model data
+        this.$data.digits[index] = digit;
+        // add to the path
+        path += this.$data.digits[index];
+        // add a - every 4 characters
+        if ((index % 4) === 3 && index != 11) {
+          path += "-";
+        }
+      });
+      // naviagte to the remote page
+      this.$router.push(path);
     },
     backDigit: function() {
-      this.$data[`digit${this.$data.current}`] = null;
-      if (this.$data.current > 1) {
-        this.$data.current--;
-      }
-      document.getElementById(`digit${this.$data.current}`).focus();
+      // delete the current digit
+      this.$data[this.$data.current] = "";
+      // move back
+      this.leftDigit();
     },
     leftDigit: function(e) {
-      if (this.$data.current > 1) {
+      // go back one digit
+      if (this.$data.current > 0) {
         this.$data.current--;
       }
+      // focus the DOM element
       document.getElementById(`digit${this.$data.current}`).focus();
-      e.preventDefault();
+      // prevent the event if it was from the keyboard
+      if(e !== undefined) {
+        e.preventDefault();
+      }
     },
     rightDigit: function(e) {
-      if (this.$data.current < 13) {
+      // go forwards a digit
+      if (this.$data.current < 12) {
         this.$data.current++;
       }
-      if (this.$data.current < 13) {
+      // focus the DOM element
+      if (this.$data.current < 12) {
         document.getElementById(`digit${this.$data.current}`).focus();
       }
-
-      e.preventDefault();
+      // prevent the event if it was from the keyboard
+      if(e !== undefined) {
+        e.preventDefault();
+      }
     },
     focus: function(n) {
+      // change the current digit
       this.$data.current = n;
     }
   },
   watch: {
-    digit1: makeWatcher(1),
-    digit2: makeWatcher(2),
-    digit3: makeWatcher(3),
-    digit4: makeWatcher(4),
-    digit5: makeWatcher(5),
-    digit6: makeWatcher(6),
-    digit7: makeWatcher(7),
-    digit8: makeWatcher(8),
-    digit9: makeWatcher(9),
-    digit10: makeWatcher(10),
-    digit11: makeWatcher(11),
-    digit12: makeWatcher(12, true)
+    digits: {
+      handler: function(values) {
+        // if the item is set to null do nothing
+        if(values[this.$data.current] == "") {
+          return;
+        }
+        // input validation
+        var digit = parseInt(values[this.$data.current]) % 10;
+        // NaN
+        if (digit != digit) {
+          this.$data.digits[this.$data.current] = "";
+          return;
+        } else {
+          this.$data.digits[this.$data.current] = digit;
+        }
+        
+        if (this.$data.current == 11) {
+          // focus the submit button
+          this.$data.current = 12;
+          document.getElementById("digit-submit").focus();
+        } else {
+          // go forwards a digit
+          this.rightDigit();
+        }
+      },
+      // observe the values in the array, not just the elements
+      deep: true
+    }
   },
   mounted: function() {
+    // make sure it isn't in darkmode for this page
     document.body.classList.remove("darkmode");
-
+    // elements for taking video from camera
     var video = document.createElement("video");
     var canvasElement = document.getElementById("video-out");
     var canvas = canvasElement.getContext("2d");
-
     canvasElement.style.display = "none";
 
     // Use facingMode: environment to attemt to get the front camera on phones
@@ -311,12 +181,15 @@ export default {
       })
       .catch(e => {
         console.log(e);
+        // if there is an error use manual entry instead of the camera
         this.$data.useCamera = false;
       });
+    
     var that = this;
-
+    // runs every available frame
     function tick() {
       if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        // show the video output
         canvasElement.style.display = "inline-block";
         that.$data.useCamera = true;
 
@@ -335,6 +208,7 @@ export default {
           canvasElement.width,
           canvasElement.height
         );
+        // attempt to extract the QR code data
         var code = jsQR(imageData.data, imageData.width, imageData.height, {
           inversionAttempts: "dontInvert"
         });
@@ -345,9 +219,8 @@ export default {
         } else {
           // continue
         }
-      } else {
-        that.$data.msg = "Camera is not providing video.";
       }
+      // get another frame
       requestAnimationFrame(tick);
     }
   }
