@@ -16,7 +16,7 @@
         @keydown.left="leftDigit"
         @keydown.right="rightDigit"
       >
-        <div 
+        <div
           v-for="(digit, index) in digits"
           :key="`digit${index}`"
           style="display: inline-block"
@@ -34,7 +34,7 @@
             inputmode="decimal"
             autocomplete="off"
           />
-          <span v-if="index%4 == 3 && index != 11">-</span>
+          <span v-if="index % 4 == 3 && index != 11">-</span>
         </div>
         <br />
         <button @click="formCode" id="digit-submit">Connect</button>
@@ -48,26 +48,12 @@ import jsQR from "jsqr";
 const deploy = require("../../../deploy-details.json");
 const publicPath = `https://${deploy.publicPath}`;
 
-
 export default {
   name: "join",
   components: {},
   data: () => {
     return {
-      digits: [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-      ],
+      digits: ["", "", "", "", "", "", "", "", "", "", "", ""],
       current: 1,
       useCamera: true
     };
@@ -75,11 +61,11 @@ export default {
   methods: {
     formCode: function() {
       var path = "/remote/";
-       this.$data.digits.forEach( (digit, index) => {
-         // cut everything down to one digit
+      this.$data.digits.forEach((digit, index) => {
+        // cut everything down to one digit
         digit = parseInt(digit) % 10;
         // repalce NaN with ""
-        if(digit != digit) {
+        if (digit != digit) {
           digit = "";
         }
         // update the model data
@@ -87,7 +73,7 @@ export default {
         // add to the path
         path += this.$data.digits[index];
         // add a - every 4 characters
-        if ((index % 4) === 3 && index != 11) {
+        if (index % 4 === 3 && index != 11) {
           path += "-";
         }
       });
@@ -108,7 +94,7 @@ export default {
       // focus the DOM element
       document.getElementById(`digit${this.$data.current}`).focus();
       // prevent the event if it was from the keyboard
-      if(e !== undefined) {
+      if (e !== undefined) {
         e.preventDefault();
       }
     },
@@ -122,7 +108,7 @@ export default {
         document.getElementById(`digit${this.$data.current}`).focus();
       }
       // prevent the event if it was from the keyboard
-      if(e !== undefined) {
+      if (e !== undefined) {
         e.preventDefault();
       }
     },
@@ -135,7 +121,7 @@ export default {
     digits: {
       handler: function(values) {
         // if the item is set to null do nothing
-        if(values[this.$data.current] == "") {
+        if (values[this.$data.current] == "") {
           return;
         }
         // input validation
@@ -147,7 +133,7 @@ export default {
         } else {
           this.$data.digits[this.$data.current] = digit;
         }
-        
+
         if (this.$data.current == 11) {
           // focus the submit button
           this.$data.current = 12;
@@ -184,7 +170,7 @@ export default {
         // if there is an error use manual entry instead of the camera
         this.$data.useCamera = false;
       });
-    
+
     var that = this;
     // runs every available frame
     function tick() {
