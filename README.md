@@ -126,6 +126,8 @@ These commands help when you are actively making changes by keeping code readabl
 - `npm run lint:web` - Lint and format code ESLint + Prettier
 - `npm run lint:ext` - Format code with Prettier
 
+I've put together a complete write up of how I built this project over on [Medium](https://medium.com/@elviswolcott/create-a-remote-control-for-black-mirror-bandersnatch-with-pubnub-1d09dad6b0f1?source=friends_link&sk=6823d571f4f7a3489a8ad17f1b67f03b).
+
 # :question: FAQ #
 
 ## The remote gets the options before they show up on screen. What is this magic? ##
