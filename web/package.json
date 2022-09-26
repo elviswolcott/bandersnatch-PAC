@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "jsqr": "^1.2.0",
-    "pubnub": "^4.21.7",
+    "pubnub": "^4.37.0",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1"
   },
