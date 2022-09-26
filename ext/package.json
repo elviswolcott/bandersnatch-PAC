@@ -4,7 +4,7 @@
   "description": "Control bandersnatch from your phone or other device.",
   "main": "controller.js",
   "dependencies": {
-    "pubnub": "^4.21.7",
+    "pubnub": "^4.37.0",
     "qrcode": "^1.4.4"
   },
   "devDependencies": {
